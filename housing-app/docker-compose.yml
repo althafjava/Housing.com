@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: housing
+      POSTGRES_PASSWORD: housing
+      POSTGRES_DB: housing
+    ports:
+      - "5545:5432"
+    volumes:
+      - housing_pgdata:/var/lib/postgresql/data
+
+volumes:
+  housing_pgdata:

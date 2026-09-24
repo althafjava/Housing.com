@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndiaProperty - Residential Property Search in Chennai</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================= TOP HEADER ======================= -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="#" class="logo">
+      <span class="logo__mark">india<em>property</em></span>
+      <span class="logo__tag">we get you home</span>
+    </a>
+
+    <nav class="mainnav" id="mainnav">
+      <div class="mainnav__item">Research <i class="caret"></i></div>
+      <div class="mainnav__item">Explore <i class="caret"></i></div>
+      <div class="mainnav__item">Assistance <i class="caret"></i></div>
+    </nav>
+
+    <div class="topbar__actions">
+      <button class="icon-btn icon-btn--app" title="Download App" aria-label="Download App">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 19h14" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <button class="btn btn--outline">
+        Home Loan <span class="badge badge--new">new</span>
+      </button>
+
+      <button class="btn btn--outline">Sell/Rent Property for Free</button>
+
+      <a href="#" class="signin">
+        <svg viewBox="0 0 24 24" class="signin__icon"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#333" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        Sign In
+      </a>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= SEARCH / FILTER BAR ======================= -->
+<div class="searchbar">
+  <div class="searchbar__inner">
+    <button class="sb-item sb-city">
+      <svg viewBox="0 0 24 24" class="pin"><path d="M12 22s7-7.2 7-12.5A7 7 0 105 9.5C5 14.8 12 22 12 22z" fill="#fff"/><circle cx="12" cy="9.5" r="2.4" fill="#333"/></svg>
+      Chennai <i class="caret caret--light"></i>
+    </button>
+
+    <button class="sb-item sb-buy">Buy <i class="caret"></i></button>
+
+    <input type="text" class="sb-search" placeholder="Localities, Builders or a Project">
+
+    <button class="sb-item sb-price">Price <i class="caret"></i></button>
+
+    <button class="sb-item sb-type">ALL Residential <i class="caret"></i></button>
+
+    <button class="sb-go" aria-label="Search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="2.2" fill="none"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+
+    <button class="sb-filter">
+      <svg viewBox="0 0 24 24"><path d="M4 5h16M7 12h10M10 19h4" stroke="#5db85c" stroke-width="2" stroke-linecap="round"/></svg>
+      <i class="caret"></i>
+    </button>
+
+    <div class="sb-icons">
+      <button class="sb-icon" aria-label="Favourites">
+        <svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+        <span class="dot dot--muted">0</span>
+      </button>
+      <button class="sb-icon" aria-label="Notifications">
+        <svg viewBox="0 0 24 24"><path d="M12 22a2.2 2.2 0 002.2-2.2h-4.4A2.2 2.2 0 0012 22zM18 16v-5a6 6 0 10-12 0v5l-2 2v1h16v-1z" fill="#fff"/></svg>
+      </button>
+      <button class="sb-icon" aria-label="Saved searches">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="1.8" fill="none"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dot dot--red">20</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BREADCRUMB ======================= -->
+<div class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="#">Home</a><span>&gt;</span>
+    <a href="#">Chennai</a><span>&gt;</span>
+    <a href="#">Real Estate</a><span>&gt;</span>
+    <a href="#">Residential Property</a><span>&gt;</span>
+    <span class="breadcrumb__current">Search AllResidential in Chennai</span>
+  </div>
+</div>
+
+<!-- ======================= PAGE BODY ======================= -->
+<div class="page">
+
+  <!-- -------- SIDEBAR -------- -->
+  <aside class="sidebar" id="sidebar">
+    <h3 class="sidebar__title">Quick Refine</h3>
+
+    <div class="filter-group">
+      <button class="filter-group__head" data-toggle>
+        BHK <i class="chev"></i>
+      </button>
+      <div class="filter-group__body">
+        <label class="chk"><input type="checkbox"> 1 BHK</label>
+        <label class="chk"><input type="checkbox"> 1.5 BHK</label>
+        <label class="chk"><input type="checkbox"> 2 BHK</label>
+        <label class="chk"><input type="checkbox"> 2.5 BHK</label>
+        <label class="chk"><input type="checkbox"> 3 BHK</label>
+        <a href="#" class="viewmore">View more...</a>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__head" data-toggle>
+        Property Type <i class="chev"></i>
+      </button>
+      <div class="filter-group__body">
+        <label class="chk"><input type="checkbox"> Apartment/Flat</label>
+        <label class="chk"><input type="checkbox"> Independent House/Villa</label>
+        <label class="chk"><input type="checkbox"> Builder Floor</label>
+        <label class="chk"><input type="checkbox"> Row House</label>
+        <label class="chk"><input type="checkbox"> Farm House</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__head" data-toggle>
+        Top/Nearby Localities <i class="chev"></i>
+      </button>
+      <div class="filter-group__body">
+        <label class="chk"><input type="checkbox"> Avadi</label>
+        <label class="chk"><input type="checkbox"> Guduvanchery</label>
+        <label class="chk"><input type="checkbox"> Pallikaranal</label>
+        <label class="chk"><input type="checkbox"> Urapakkam</label>
+        <label class="chk"><input type="checkbox"> Ambattur</label>
+        <a href="#" class="viewmore">View more...</a>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-group__head" data-toggle>
+        Budget Range <i class="chev"></i>
+      </button>
+      <div class="filter-group__body">
+        <label class="chk"><input type="checkbox"> Less than 10 Lacs</label>
+        <label class="chk"><input type="checkbox"> 10 Lacs - 20 Lacs</label>
+        <label class="chk"><input type="checkbox"> 20 Lacs - 30 Lacs</label>
+        <label class="chk"><input type="checkbox"> 30 Lacs - 40 Lacs</label>
+      </div>
+    </div>
+  </aside>
+
+  <!-- -------- MAIN CONTENT -------- -->
+  <main class="content">
+
+    <div class="content__toolbar">
+      <div class="tabs">
+        <button class="tab tab--active" data-tab="all">All properties</button>
+        <button class="tab" data-tab="affordable">Affordable Homes</button>
+        <button class="tab" data-tab="new">New Projects</button>
+      </div>
+      <div class="toolbar__right">
+        <button class="btn btn--alert">
+          <svg viewBox="0 0 24 24" class="bell-sm"><path d="M12 22a2.2 2.2 0 002.2-2.2h-4.4A2.2 2.2 0 0012 22zM18 16v-5a6 6 0 10-12 0v5l-2 2v1h16v-1z" fill="#f57c00"/></svg>
+          Set Property Alerts
+        </button>
+        <button class="icon-btn icon-btn--pin" aria-label="Map view">
+          <svg viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 105 9.5C5 14.8 12 22 12 22z" stroke="#666" stroke-width="1.6" fill="none"/><circle cx="12" cy="9.5" r="2.2" fill="#666"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="related">
+      <span class="related__label">RELATED PROPERTIES</span>
+      <div class="related__tags">
+        <a href="#">Less than 10 Lacs</a><span>|</span>
+        <a href="#">10 to 20 Lacs</a><span>|</span>
+        <a href="#">20 to 30 Lacs</a><span>|</span>
+        <a href="#">Less than 500 Sq.ft</a><span>|</span>
+        <a href="#">500 to 1000 Sq.ft</a><span>|</span>
+        <a href="#">1000 to 1500 Sq.ft</a><span>|</span>
+        <br>
+        <a href="#">1 bhk</a><span>|</span>
+        <a href="#">1.5 bhk</a><span>|</span>
+        <a href="#">2 bhk</a><span>|</span>
+        <a href="#">Tambaram</a><span>|</span>
+        <a href="#">Urapakkam</a><span>|</span>
+        <a href="#">Sholinganallur</a><span>|</span>
+      </div>
+      <label class="sortby">
+        Sort by
+        <select>
+          <option>Relevant</option>
+          <option>Price - Low to High</option>
+          <option>Price - High to Low</option>
+          <option>Newest First</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- -------- PROPERTY GRID -------- -->
+    <div class="grid" id="propertyGrid">
+
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card__media card__media--villa">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 7.5 Cr</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Built-up Area: 5765 Sq.ft <span>(535.59 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">5765 Sq.ft Independent Hou...</a></h3>
+          <div class="card__meta">in ECR for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Project: <a href="#">Myans Luxury Villas A</a></span>
+            <span class="updated">Updated<br>1 week ago</span>
+          </div>
+
+          <div class="emi">EMI: &#8377; 5.15 L @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="amenities">
+            <span class="amen-label">KEY AMENITIES</span>
+            <span class="amen-icon" title="Power Backup">&#9889;</span>
+            <span class="amen-icon" title="Security">&#128694;</span>
+            <span class="amen-icon" title="Parking">&#128663;</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card__media card__media--interior">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 95 L</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Carpet Area: 880 Sq.ft <span>(81.75 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">2 BHK Apartment/Flat</a></h3>
+          <div class="card__meta">in Porur for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Owner:</span>
+            <span class="updated">Updated<br>1 month ago</span>
+          </div>
+
+          <div class="pricetracker">
+            <div class="pricetracker__head">
+              <svg viewBox="0 0 24 24" class="pt-icon"><path d="M4 19h16M7 16V9m5 7V4m5 12v-5" stroke="#666" stroke-width="1.8" stroke-linecap="round"/></svg>
+              pricetracker
+            </div>
+            <div class="pricetracker__scale">
+              <span class="pt-label">Low</span>
+              <span class="pt-label pt-avg">Avg</span>
+              <span class="pt-label pt-high">High</span>
+            </div>
+            <div class="pt-bar"><span class="pt-fill"></span></div>
+            <div class="pt-values">
+              <span class="pt-low">2412/Sq.ft</span>
+              <span class="pt-high">7692/Sq.ft</span>
+            </div>
+          </div>
+
+          <div class="emi">EMI: &#8377; 65,235 @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="card__links">
+            <a href="#" class="thisproperty">This Property &#9650;</a>
+            <a href="#" class="trends">View Transaction Trends &amp; Save Money</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card__media card__media--highrise">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 3.6 Cr</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Carpet Area: 1280 Sq.ft <span>(118.92 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">3 BHK Apartment/Flat</a></h3>
+          <div class="card__meta">in Perungudi for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Owner: <a href="#">sivapratap</a></span>
+            <span class="updated">Updated<br>21-07-2026</span>
+          </div>
+
+          <div class="pricetracker">
+            <div class="pricetracker__head">
+              <svg viewBox="0 0 24 24" class="pt-icon"><path d="M4 19h16M7 16V9m5 7V4m5 12v-5" stroke="#666" stroke-width="1.8" stroke-linecap="round"/></svg>
+              pricetracker
+            </div>
+            <div class="pricetracker__scale">
+              <span class="pt-label">Low</span>
+              <span class="pt-label pt-avg">Avg</span>
+              <span class="pt-label pt-high">High</span>
+            </div>
+            <div class="pt-bar"><span class="pt-fill"></span></div>
+            <div class="pt-values">
+              <span class="pt-low">2236/Sq.ft</span>
+              <span class="pt-high">10311/Sq.ft</span>
+            </div>
+          </div>
+
+          <div class="emi">EMI: &#8377; 2.47 L @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="card__links">
+            <a href="#" class="thisproperty">This Property &#9650;</a>
+            <a href="#" class="trends">View Transaction Trends &amp; Save Money</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="card__media card__media--villa2">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 6.5 Cr</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Built-up Area: 4895 Sq.ft <span>(454.76 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">4 BHK Independent House/V...</a></h3>
+          <div class="card__meta">in ECR for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Project: <a href="#">Myans Luxury Villas A</a></span>
+            <span class="updated">Updated<br>1 week ago</span>
+          </div>
+
+          <div class="emi">EMI: &#8377; 4.46 L @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="amenities">
+            <span class="amen-label">KEY AMENITIES</span>
+            <span class="amen-icon" title="Power Backup">&#9889;</span>
+            <span class="amen-icon" title="Security">&#128694;</span>
+            <span class="amen-icon" title="Parking">&#128663;</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card">
+        <div class="card__media card__media--villa">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 6.5 Cr</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Built-up Area: 4933 Sq.ft <span>(458.29 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">4 BHK Independent House/V...</a></h3>
+          <div class="card__meta">in ECR for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Project: <a href="#">Myans Luxury Villas A</a></span>
+            <span class="updated">Updated<br>1 week ago</span>
+          </div>
+
+          <div class="emi">EMI: &#8377; 4.46 L @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="amenities">
+            <span class="amen-label">KEY AMENITIES</span>
+            <span class="amen-icon" title="Power Backup">&#9889;</span>
+            <span class="amen-icon" title="Security">&#128694;</span>
+            <span class="amen-icon" title="Parking">&#128663;</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card">
+        <div class="card__media card__media--interior">
+          <button class="fav" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 17.3l-5.4 3.2 1.4-6.1L3 9.9l6.2-.5L12 3.7l2.8 5.7 6.2.5-4.9 4.5 1.4 6.1z" fill="none" stroke="#f4b400" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="card__body">
+          <div class="card__pricerow">
+            <span class="price">&#8377; 95 L</span>
+            <button class="btn btn--contact">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z" fill="#fff"/></svg>
+              Contact Now
+            </button>
+          </div>
+          <div class="area">Carpet Area: 880 Sq.ft <span>(81.75 Sq.M)</span></div>
+          <h3 class="card__title"><a href="#">2 BHK Apartment/Flat</a></h3>
+          <div class="card__meta">in Porur for Sale</div>
+          <div class="card__status">Ready to move in</div>
+
+          <div class="card__rowline">
+            <span>Owner:</span>
+            <span class="updated">Updated<br>1 month ago</span>
+          </div>
+
+          <div class="emi">EMI: &#8377; 65,235 @ 8.35% <span class="star">*</span> <a href="#">Apply Home Loan</a></div>
+
+          <div class="amenities">
+            <span class="amen-label">KEY AMENITIES</span>
+            <span class="amen-icon" title="Power Backup">&#9889;</span>
+            <span class="amen-icon" title="Security">&#128694;</span>
+            <span class="amen-icon" title="Parking">&#128663;</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+</div>
+
+<!-- ======================= NOTIFY WIDGET (collapsed pill) ======================= -->
+<button class="notify-pill" id="notifyPillBtn" aria-haspopup="dialog" aria-controls="notifyModal">
+  <svg viewBox="0 0 24 24"><path d="M12 22a2.2 2.2 0 002.2-2.2h-4.4A2.2 2.2 0 0012 22zM18 16v-5a6 6 0 10-12 0v5l-2 2v1h16v-1z" fill="#fff"/></svg>
+</button>
+
+<!-- ======================= NOTIFY MODAL (expanded) ======================= -->
+<div class="modal-overlay" id="notifyModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="notifyTitle">
+    <button class="modal__close" id="notifyCloseBtn" aria-label="Close">&times;</button>
+
+    <h2 id="notifyTitle" class="modal__title">Let us find the property for you</h2>
+    <p class="modal__sub">Get notified when properties matching your requirement are available</p>
+
+    <div class="modal__city">CHENNAI</div>
+    <div class="modal__filters">
+      <input type="text" placeholder="Type Your Locality">
+      <select>
+        <option>All Residential</option>
+        <option>Apartment/Flat</option>
+        <option>Independent House/Villa</option>
+      </select>
+      <select>
+        <option>Any Price</option>
+        <option>Under 20 Lacs</option>
+        <option>20 - 50 Lacs</option>
+        <option>50 Lacs - 1 Cr</option>
+      </select>
+      <select>
+        <option>Any BHK</option>
+        <option>1 BHK</option>
+        <option>2 BHK</option>
+        <option>3 BHK</option>
+      </select>
+    </div>
+
+    <div class="modal__signup">
+      <p class="modal__signup-title">Sign Up and Get Notified</p>
+      <div class="modal__signup-grid">
+        <div class="modal__social">
+          <button class="btn btn--google">
+            <span class="g-icon">G+</span> SIGN UP WITH GOOGLE
+          </button>
+          <button class="btn btn--facebook">
+            <span class="f-icon">f</span> SIGN UP WITH FACEBOOK
+          </button>
+        </div>
+        <div class="modal__or">or</div>
+        <div class="modal__form">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <input type="password" placeholder="Password">
+          <div class="modal__phone">
+            <select class="modal__cc"><option>+91</option><option>+1</option><option>+44</option></select>
+            <input type="tel" placeholder="Mobile Number">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--getnotified">GET NOTIFIED</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

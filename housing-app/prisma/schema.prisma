@@ -1,0 +1,171 @@
+// Housing.com — Prisma schema
+// Source: implementation_plan.md Phase 1, with one fix applied from the
+// housing_architecture.md / implementation_plan.md review: Owner now links
+// back to User (userId) so an authenticated user (Phase 4 auth) can actually
+// be resolved to the Owner record that Phase 6 (Sell/Rent for Free) needs.
+//
+// Explicitly excluded per project scope: Alert (messaging/alerts), any
+// S3/media model beyond a plain imageUrl string, and anything cache/queue-shaped.
+//
+// Note: Prisma 7 moved the datasource `url` out of this file — the
+// connection string lives in prisma7.config.ts (loaded from DATABASE_URL).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String     @unique
+  passwordHash  String?
+  mobile        String?
+  oauthProvider String?
+  oauthId       String?
+  favorites     Favorite[]
+  leads         Lead[]
+  owner         Owner?
+  createdAt     DateTime   @default(now())
+}
+
+model City {
+  id         String     @id @default(cuid())
+  name       String     @unique
+  slug       String     @unique
+  state      String
+  localities Locality[]
+  listings   Listing[]
+}
+
+model Locality {
+  id            String    @id @default(cuid())
+  city          City      @relation(fields: [cityId], references: [id])
+  cityId        String
+  name          String
+  slug          String
+  isTopLocality Boolean   @default(false)
+  listings      Listing[]
+
+  @@unique([cityId, slug])
+  @@index([cityId])
+}
+
+enum OwnerType {
+  INDIVIDUAL
+  BUILDER
+  AGENT
+}
+
+model Owner {
+  id       String    @id @default(cuid())
+  user     User      @relation(fields: [userId], references: [id])
+  userId   String    @unique
+  name     String
+  type     OwnerType @default(INDIVIDUAL)
+  verified Boolean   @default(false)
+  listings Listing[]
+  projects Project[]
+}
+
+model Project {
+  id        String    @id @default(cuid())
+  name      String
+  builder   Owner     @relation(fields: [builderId], references: [id])
+  builderId String
+  listings  Listing[]
+}
+
+enum ListingType {
+  SALE
+  RENT
+}
+
+enum PropertyType {
+  APARTMENT
+  VILLA
+  BUILDER_FLOOR
+  ROW_HOUSE
+  FARM_HOUSE
+}
+
+enum ListingStatus {
+  READY_TO_MOVE
+  UNDER_CONSTRUCTION
+}
+
+model Listing {
+  id              String        @id @default(cuid())
+  owner           Owner         @relation(fields: [ownerId], references: [id])
+  ownerId         String
+  project         Project?      @relation(fields: [projectId], references: [id])
+  projectId       String?
+  title           String
+  description     String?
+  listingType     ListingType
+  propertyType    PropertyType
+  bhk             Float?
+  carpetAreaSqft  Float?
+  builtupAreaSqft Float?
+  price           Decimal
+  status          ListingStatus @default(READY_TO_MOVE)
+  city            City          @relation(fields: [cityId], references: [id])
+  cityId          String
+  locality        Locality      @relation(fields: [localityId], references: [id])
+  localityId      String
+  imageUrl        String?
+  amenities       Amenity[]
+  favoritedBy     Favorite[]
+  leads           Lead[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([cityId, localityId, propertyType, status])
+}
+
+model Amenity {
+  id        String  @id @default(cuid())
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId String
+  key       String
+  icon      String?
+}
+
+model Favorite {
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  listing   Listing  @relation(fields: [listingId], references: [id])
+  listingId String
+  createdAt DateTime @default(now())
+
+  @@id([userId, listingId])
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  listing     Listing  @relation(fields: [listingId], references: [id])
+  listingId   String
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      String?
+  channel     String
+  contactInfo String?
+  createdAt   DateTime @default(now())
+
+  @@index([listingId, createdAt])
+}
+
+model PriceTrackerSnapshot {
+  id           String       @id @default(cuid())
+  localityId   String
+  propertyType PropertyType
+  lowPerSqft   Decimal
+  avgPerSqft   Decimal
+  highPerSqft  Decimal
+  asOfDate     DateTime     @default(now())
+
+  @@index([localityId, propertyType, asOfDate])
+}
